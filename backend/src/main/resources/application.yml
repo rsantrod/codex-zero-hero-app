@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: personal-finance-api
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/personal_finance}
+    username: ${SPRING_DATASOURCE_USERNAME:finance_app}
+    password: ${SPRING_DATASOURCE_PASSWORD:finance_app}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    locations: classpath:db/migration
+
+server:
+  port: 8080
