@@ -29,4 +29,29 @@ class TransactionControllerTests {
             .andExpect(jsonPath("$[0].description").value("Fictional payroll deposit"))
             .andExpect(jsonPath("$[0].accountName").value("Everyday Checking"));
     }
+
+    @Test
+    void filtersRecentTransactionsByCategoryBeforeApplyingTheLimit() throws Exception {
+        mockMvc.perform(get("/api/transactions/recent?limit=1&category=Groceries"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", hasSize(1)))
+            .andExpect(jsonPath("$[0].description").value("Neighborhood market"))
+            .andExpect(jsonPath("$[0].category").value("Groceries"));
+    }
+
+    @Test
+    void returnsNoTransactionsForAnUnknownCategory() throws Exception {
+        mockMvc.perform(get("/api/transactions/recent?category=Unknown"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", hasSize(0)));
+    }
+
+    @Test
+    void listsCategoriesFromTransactionDataInNameOrder() throws Exception {
+        mockMvc.perform(get("/api/transactions/categories"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", hasSize(8)))
+            .andExpect(jsonPath("$[0].name").value("Dining"))
+            .andExpect(jsonPath("$[7].name").value("Utilities"));
+    }
 }
