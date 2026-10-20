@@ -12,6 +12,7 @@ This first working slice contains:
 - Spring Boot
 - PostgreSQL
 - Read-only REST endpoints for accounts and recent transactions
+- Category choices and filtering backed by transaction data
 - Fictional seed data loaded by Flyway
 
 It intentionally does not include authentication, budgets, imports, reporting, analytics, or CI/CD.
@@ -67,4 +68,11 @@ Frontend production build:
 cd frontend
 npm install
 npm run build
+```
+
+Frontend category-filter tests:
+
+```bash
+cd frontend
+npm test
 ```
