@@ -70,7 +70,7 @@ npm install
 npm run build
 ```
 
-Frontend category-filter tests:
+Frontend component and category-filter tests:
 
 ```bash
 cd frontend

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
-    "test": "node --test src/**/*.test.js"
+    "test": "ng test --watch=false"
   },
   "dependencies": {
     "@angular/common": "^21.0.0",
@@ -21,6 +21,8 @@
     "@angular/build": "^21.0.0",
     "@angular/cli": "^21.0.0",
     "@angular/compiler-cli": "^21.0.0",
-    "typescript": "~5.9.0"
+    "jsdom": "^29.1.1",
+    "typescript": "~5.9.0",
+    "vitest": "^4.1.12"
   }
 }
